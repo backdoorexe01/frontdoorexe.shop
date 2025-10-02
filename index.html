@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontDoor.exe | Your Gateway to Carding 🔐</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        #bg-video { position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -100; transform: translateX(-50%) translateY(-50%); object-fit: cover; }
+        .card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); }
+        .btn { transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); }
+        .btn-primary { background-color: #4F46E5; } .btn-primary:hover { background-color: #4338CA; }
+        .btn-secondary { background-color: rgba(255, 255, 255, 0.2); } .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.3); }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <video autoplay muted loop id="bg-video">
+        <source src="bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="relative min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-2">Front Door.exe Shop</h1>
+            <p class="text-lg md:text-xl text-gray-300">Your Gateway to Carding 🔐</p>
+        </header>
+
+        <main class="w-full max-w-7xl mx-auto">
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+        </main>
+        
+        <footer class="text-center mt-12 text-gray-400">
+            <p>&copy; 2025 Front Door.EXE All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const products = [
+                {
+                    id: 1, name: 'RDP',
+                    description: '💻 Most decentralized & bulletproof RDP ✅ Lowest cost, maximum security 🔒',
+                    price: ' Check Details For Pricing', imageUrl: 'rdp.png', detailsUrl: 'rdp.html'
+                },
+                {
+                    id: 2, name: 'CC',
+                    description: 'Top-Quality CCS at the Lowest Prices 💳🔥',
+                    price: '10', imageUrl: 'cc.png', detailsUrl: 'cc.html'
+                },
+                {
+                    id: 3, name: 'Non Vbv Bin',
+                    description: 'Non-VBV BINs – Fast & Reliable 💳⚡',
+                    price: '2', imageUrl: 'nonvbv.png', detailsUrl: 'non.html'
+                },
+                {
+                    id: 4, name: 'Proxy',
+                    description: '⚡ Fast & Fully Decentralized Proxy – Maximum Speed & Security 🌐',
+                    price: '20', imageUrl: 'proxy.png', detailsUrl: 'proxy.html'
+                },
+                {
+                    id: 5, name: 'CC Dumps',
+                    description: '💳 Fresh & High-Quality Dumps – Reliable & Verified ✅',
+                    price: '80', imageUrl: 'ccdumps.png', detailsUrl: 'cc-dumps.html'
+                },
+                {
+                    id: 6, name: 'Phishing Sites',
+                    description: '💻 Best & Realistic – Comes with Full Source Code ✅',
+                    price: '25', imageUrl: 'phishing.png', detailsUrl: 'phishing-sites.html'
+                },
+		        {
+                    id: 7, name: 'CC Generator Script',
+                    description: '💻 Luhn & All Sums Check ✅ Fully Verified Script ⚡',
+                    price: '6', imageUrl: 'ccgenerator.png', detailsUrl: 'cc-generator-script.html'
+                },
+		        {
+                    id: 8, name: 'VBV / Non VBV Checker Script',
+                    description: '💳 100% VBV & Non-VBV Results ✅ Reliable & Verified ⚡',
+                    price: '15', imageUrl: 'vv.png', detailsUrl: 'vbv-checker-script.html'
+                }
+            ];
+
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = products.map(product => `
+                <div class="card rounded-2xl overflow-hidden shadow-lg p-6 flex flex-col">
+                    <img class="w-full h-48 object-cover rounded-lg mb-4 shadow-md" src="${product.imageUrl}" alt="${product.name}" onerror="this.src='https://placehold.co/600x400/172554/FFFFFF?text=Image+Not+Found';">
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2">${product.name}</h3>
+                        <p class="text-gray-300 mb-4 flex-grow">${product.description}</p>
+                        <div class="text-3xl font-black text-white mb-6">$${product.price}</div>
+                        <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+                            <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Buy Now</a>
+                            <a href="${product.detailsUrl}" class="btn btn-secondary text-white font-bold py-3 px-6 rounded-lg text-center w-full">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        });
+    </script>
+
+</body>
+</html>

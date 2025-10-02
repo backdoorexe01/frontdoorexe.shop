@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDP Plans - FrontDoor.exe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        #bg-video { position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%; z-index: -100; transform: translateX(-50%) translateY(-50%); object-fit: cover; }
+        .plan-card { 
+            background: rgba(17, 24, 39, 0.8); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .plan-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(6, 182, 212, 0.5); /* Cyan border on hover */
+        }
+        .btn { transition: all 0.3s ease; } 
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); }
+        .btn-primary { background-color: #4F46E5; } .btn-primary:hover { background-color: #4338CA; }
+        .btn-secondary { background-color: rgba(255, 255, 255, 0.1); } .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <video autoplay muted loop id="bg-video"><source src="bg.mp4" type="video/mp4"></video>
+    
+    <div class="relative min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+        <div class="text-center mb-10">
+            <h1 class="text-5xl md:text-6xl font-black tracking-tighter">RDP Plans</h1>
+            <p class="text-lg text-gray-400 mt-2">Instantly Available & Fully Decentralized</p><br>
+	<h2 class="text-5xl md:text-6xl font-black tracking-tighter">Windows RDPs</h2>
+        </div>
+
+        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            
+            <div class="plan-card rounded-2xl p-8 flex flex-col">
+                <h3 class="text-2xl font-bold text-cyan-400">RDP-Regular</h3>
+                <p class="text-sm text-gray-400 mb-6">Instantly Available</p>
+                <ul class="space-y-3 text-gray-300 flex-grow">
+                    <li><i class="fas fa-microchip fa-fw text-cyan-500 mr-2"></i> <strong>CPU:</strong> 2x Epyc 7350 cores</li>
+                    <li><i class="fas fa-memory fa-fw text-cyan-500 mr-2"></i> <strong>RAM:</strong> 6GB</li>
+                    <li><i class="fas fa-hdd fa-fw text-cyan-500 mr-2"></i> <strong>Storage:</strong> 40GB NVME</li>
+                    <li><i class="fas fa-network-wired fa-fw text-cyan-500 mr-2"></i> <strong>Uplink:</strong> 1G</li>
+                    <li><i class="fas fa-infinity fa-fw text-cyan-500 mr-2"></i> <strong>Bandwidth:</strong> Unlimited</li>
+                </ul>
+                <div class="text-4xl font-black my-6 text-center">€25<span class="text-base font-normal text-gray-400">/month</span></div>
+                <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Purchase</a>
+            </div>
+
+            <div class="plan-card rounded-2xl p-8 flex flex-col">
+                <h3 class="text-2xl font-bold text-cyan-400">RDP-Business</h3>
+                <p class="text-sm text-gray-400 mb-6">Instantly Available</p>
+                <ul class="space-y-3 text-gray-300 flex-grow">
+                    <li><i class="fas fa-microchip fa-fw text-cyan-500 mr-2"></i> <strong>CPU:</strong> 4x Epyc 7350 cores</li>
+                    <li><i class="fas fa-memory fa-fw text-cyan-500 mr-2"></i> <strong>RAM:</strong> 8GB</li>
+                    <li><i class="fas fa-hdd fa-fw text-cyan-500 mr-2"></i> <strong>Storage:</strong> 60GB NVME</li>
+                    <li><i class="fas fa-network-wired fa-fw text-cyan-500 mr-2"></i> <strong>Uplink:</strong> 1G</li>
+                    <li><i class="fas fa-infinity fa-fw text-cyan-500 mr-2"></i> <strong>Bandwidth:</strong> Unlimited</li>
+                </ul>
+                <div class="text-4xl font-black my-6 text-center">€45<span class="text-base font-normal text-gray-400">/month</span></div>
+                <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Purchase</a>
+            </div>
+
+            <div class="plan-card rounded-2xl p-8 flex flex-col">
+                <h3 class="text-2xl font-bold text-cyan-400">RDP-Premium</h3>
+                <p class="text-sm text-gray-400 mb-6">Instantly Available</p>
+                <ul class="space-y-3 text-gray-300 flex-grow">
+                    <li><i class="fas fa-microchip fa-fw text-cyan-500 mr-2"></i> <strong>CPU:</strong> 8x Epyc 7350 cores</li>
+                    <li><i class="fas fa-memory fa-fw text-cyan-500 mr-2"></i> <strong>RAM:</strong> 12GB</li>
+                    <li><i class="fas fa-hdd fa-fw text-cyan-500 mr-2"></i> <strong>Storage:</strong> 80GB NVME</li>
+                    <li><i class="fas fa-network-wired fa-fw text-cyan-500 mr-2"></i> <strong>Uplink:</strong> 1G</li>
+                    <li><i class="fas fa-infinity fa-fw text-cyan-500 mr-2"></i> <strong>Bandwidth:</strong> Unlimited</li>
+                </ul>
+                <div class="text-4xl font-black my-6 text-center">€60<span class="text-base font-normal text-gray-400">/month</span></div>
+                <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Purchase</a>
+            </div>
+
+            <div class="plan-card rounded-2xl p-8 flex flex-col md:col-span-2 xl:col-span-1">
+                <h3 class="text-2xl font-bold text-cyan-400">RDP-Enterprise</h3>
+                <p class="text-sm text-gray-400 mb-6">Instantly Available</p>
+                <ul class="space-y-3 text-gray-300 flex-grow">
+                    <li><i class="fas fa-microchip fa-fw text-cyan-500 mr-2"></i> <strong>CPU:</strong> 10x Epyc 7350 cores</li>
+                    <li><i class="fas fa-memory fa-fw text-cyan-500 mr-2"></i> <strong>RAM:</strong> 12GB</li>
+                    <li><i class="fas fa-hdd fa-fw text-cyan-500 mr-2"></i> <strong>Storage:</strong> 140GB NVME</li>
+                    <li><i class="fas fa-network-wired fa-fw text-cyan-500 mr-2"></i> <strong>Uplink:</strong> 1G</li>
+                    <li><i class="fas fa-infinity fa-fw text-cyan-500 mr-2"></i> <strong>Bandwidth:</strong> Unlimited</li>
+                </ul>
+                <div class="text-4xl font-black my-6 text-center">€90<span class="text-base font-normal text-gray-400">/month</span></div>
+                <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Purchase</a>
+            </div>
+
+            <div class="plan-card rounded-2xl p-8 flex flex-col">
+                <h3 class="text-2xl font-bold text-cyan-400">RDP-Endgame</h3>
+                <p class="text-sm text-gray-400 mb-6">Instantly Available</p>
+                <ul class="space-y-3 text-gray-300 flex-grow">
+                    <li><i class="fas fa-microchip fa-fw text-cyan-500 mr-2"></i> <strong>CPU:</strong> 10x Epyc 7350 cores</li>
+                    <li><i class="fas fa-memory fa-fw text-cyan-500 mr-2"></i> <strong>RAM:</strong> 36GB</li>
+                    <li><i class="fas fa-hdd fa-fw text-cyan-500 mr-2"></i> <strong>Storage:</strong> 140GB NVME</li>
+                    <li><i class="fas fa-network-wired fa-fw text-cyan-500 mr-2"></i> <strong>Uplink:</strong> 1G</li>
+                    <li><i class="fas fa-infinity fa-fw text-cyan-500 mr-2"></i> <strong>Bandwidth:</strong> Unlimited</li>
+                </ul>
+                <div class="text-4xl font-black my-6 text-center">€120<span class="text-base font-normal text-gray-400">/month</span></div>
+                <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Purchase</a>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="index.html" class="btn btn-secondary text-white font-bold py-3 px-8 rounded-lg">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Main Shop
+            </a>
+        </div>
+    </div>
+</body>
+</html>

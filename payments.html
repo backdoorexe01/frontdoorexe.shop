@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Payments — Front Door .exe</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071023 0%,#081627 100%);color:#e6eef8}
+    .wrap{max-width:820px;margin:36px auto;padding:24px}
+    header{display:flex;align-items:center;gap:14px}
+    h1{font-size:20px;margin:0}
+    p.lead{color:var(--muted);margin:8px 0 20px}
+    .card{background:var(--card);border-radius:12px;padding:18px;margin-bottom:16px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .row{display:flex;flex-wrap:wrap;gap:12px}
+    .col{flex:1 1 260px;min-width:260px}
+    .label{font-size:13px;color:var(--muted);margin-bottom:6px}
+    .value{word-break:break-all;background:var(--glass);padding:12px;border-radius:8px;display:flex;align-items:center;justify-content:space-between}
+    button.copy{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--accent);cursor:pointer}
+    .note{font-size:13px;color:var(--muted);margin-top:10px}
+    .tg{display:inline-block;background:linear-gradient(90deg,#1d4ed8,#06b6d4);padding:8px 12px;border-radius:10px;color:#fff;text-decoration:none}
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+    @media (max-width:520px){.col{min-width:100%}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden><rect width="24" height="24" rx="6" fill="#071739"/><path d="M6 12h12" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <div>
+        <h1>Payments</h1>
+        <p class="lead">Pay using UPI or crypto. After successful payment, send the screenshot on Telegram for confirmation.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="label">Telegram for payment confirmation</div>
+      <div class="value" style="justify-content:flex-start;gap:12px">
+        <strong><a href="https://t.me//frontdoorexe">@frontdoorexe</a></strong>
+        <span class="note">Send payment screenshot here after you complete the transfer.</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 style="margin:0 0 10px">UPI</h3>
+      <div class="row">
+        <div class="col">
+          <div class="label">UPI ID (placeholder)</div>
+          <div class="value">
+            <span id="upi">exefrontdron@fam</span>
+            <button class="copy" data-copy-target="upi">Copy</button>
+          </div>
+          <p class="note">You can replace this UPI ID with your own. Or use a UPI QR generator to create a scan code.</p>
+        </div>
+        <div class="col">
+          <div class="label"><a href="qr.jpeg"></a></div>
+          <div class="value" style="flex-direction:column;align-items:center;gap:8px">
+            <div style="width:150px;height:150px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071b2a,#051026)"><a href="qr.jpg">QR</a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 style="margin:0 0 10px">Crypto</h3>
+      <div class="label">Binance ID</div>
+      <div class="value" style="margin-bottom:12px">
+        <div>
+          <div style="font-weight:600">1162969763</div>
+          <div class="note">Name: Front Door Exe</div>
+        </div>
+        <button class="copy" data-copy-text="1162969763">Copy</button>
+      </div>
+
+      <div class="label">BTC (BTC)</div>
+      <div class="value">
+        <span id="btc">12ih1tvdmjUf8MZMYKKyrw2xNXMJ4atyPW</span>
+        <button class="copy" data-copy-target="btc">Copy</button>
+      </div>
+      <div style="height:12px"></div>
+
+      <div class="label">BTC (BSC / BEP-20) & USDT (BSC / BEP-20)</div>
+      <div class="value" style="flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%">
+          <div style="flex:1 1 70%"><strong>BEP-20 address</strong><div id="bep" style="font-size:13px;margin-top:6px">0xd0c3da6d5a0132d2369f47e93a848c1e97cb0860</div></div>
+          <button class="copy" data-copy-target="bep">Copy</button>
+        </div>
+        <div class="note">Same address used for both BTC (wrapped) on BSC and USDT (BEP-20) in this placeholder setup.</div>
+      </div>
+
+    </section>
+
+    <footer>
+      <p class="note">Note: These are placeholders — replace addresses/IDs in this file with your real payment destinations before publishing. After successful payment, <strong>take a screenshot and send it to Telegram</strong> <span style="font-weight:600"><a href="https://t.me//frontdoorexe">@frontdoorexe</a></span> for confirmation.</p>
+    </footer>
+  </div>
+
+  <script>
+    // copy helpers
+    function flash(text){
+      const el = document.createElement('div');
+      el.textContent = text; el.style.position='fixed';el.style.right='18px';el.style.bottom='18px';el.style.background='#081426';el.style.border='1px solid rgba(255,255,255,0.04)';el.style.padding='10px 14px';el.style.borderRadius='10px';el.style.boxShadow='0 6px 18px rgba(0,0,0,0.6)';document.body.appendChild(el);
+      setTimeout(()=>el.remove(),2200);
+    }
+
+    document.querySelectorAll('button.copy').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const target = btn.getAttribute('data-copy-target');
+        const explicit = btn.getAttribute('data-copy-text');
+        let text='';
+        if(explicit) text = explicit;
+        else if(target){
+          const el = document.getElementById(target);
+          if(el) text = el.innerText.trim();
+        }
+        if(!text){ flash('Nothing to copy'); return }
+        navigator.clipboard.writeText(text).then(()=>flash('Copied to clipboard'))
+          .catch(()=>{ prompt('Copy this text manually:',text) });
+      })
+    })
+
+    // UPI link builder (simple deep-link for copy)
+    document.getElementById('copy-upi-link').addEventListener('click',()=>{
+      const upi = document.getElementById('upi').innerText.trim();
+      const link = `upi://pay?pa=${encodeURIComponent(upi)}&pn=Front%20Door%20Exe&cu=INR`;
+      navigator.clipboard.writeText(link).then(()=>flash('UPI link copied'))
+        .catch(()=>{ prompt('UPI link:',link) });
+    })
+  </script>
+</body>
+</html>
