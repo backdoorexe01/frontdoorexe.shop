@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phishing Simulation Toolkit</title>
+
+    <!-- Embedded CSS Styles -->
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #ddd;
+            --bg-color: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .navbar {
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar nav {
+            display: flex;
+        }
+
+        .navbar nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
+        .navbar nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Product Section */
+        .product-page {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to single column for mobile first */
+            gap: 40px;
+            background-color: var(--bg-color);
+            padding: 20px; /* Reduced padding for mobile */
+            border-radius: 8px;
+            margin: 20px auto; /* Centered with margin */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            max-width: 95%; /* Ensure it doesn't touch edges on mobile */
+        }
+        
+        /* Apply two-column layout only on larger screens */
+        @media (min-width: 768px) {
+            .product-page {
+                grid-template-columns: 1fr 1fr;
+                padding: 40px;
+                margin-top: 40px;
+                max-width: 1100px; /* Max width from container */
+            }
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .product-details h1 {
+            font-size: 2.2rem; /* Adjusted for better responsiveness */
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-box {
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .price-cycle {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-left: 5px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            box-sizing: border-box; /* Ensure padding doesn't break width */
+        }
+
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+
+        .terms {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .terms h3 {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .terms ul {
+            padding-left: 20px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 40px 0; /* Reduced padding */
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column for mobile */
+            gap: 20px; /* Reduced gap */
+        }
+        
+        /* Grid layout for tablets and desktops */
+        @media (min-width: 600px) {
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        .feature-item {
+            background-color: var(--bg-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .feature-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 20px; /* Reduced margin */
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments for navigation */
+        @media (max-width: 600px) {
+            .navbar .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .navbar nav {
+                margin-top: 1rem;
+                margin-left: -1.5rem; /* Align with brand */
+            }
+            
+            .navbar nav a {
+                margin-left: 1.5rem;
+            }
+            
+            .product-details h1 {
+                font-size: 1.8rem; /* Further reduce for small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">Front Door.exe Shop</a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Product Page Section -->
+        <section class="product-page" aria-labelledby="product-title">
+            <div class="product-image">
+                <!-- User requested image filename -->
+                <img src="phishing.png" alt="Phishing Simulation Toolkit">
+            </div>
+            
+            <div class="product-details">
+                <a href="index.html" class="back-link">← Back to Services</a>
+                <h1 id="product-title">Phishing Simulation Toolkit</h1>
+                <p class="product-description">
+                    Realistic, safe phishing simulation templates designed for authorized security awareness training.
+                    Includes harmless demo source code, mock landing pages, and email templates for use only in controlled,
+                    consented environments. Ideal for security teams, trainers, and IT administrators to educate users and test resilience.
+                </p>
+
+                <div class="price-box" id="pricing">
+                    <span class="price">$25</span>
+                    <span class="price-cycle">— one-time</span>
+                </div>
+                
+                <a href="payments.html" aria-label="Purchase Phishing Simulation Toolkit">
+                    <button class="buy-button">Purchase for Training Use</button>
+                </a>
+
+                <div class="terms" id="terms">
+                    <h3>Usage & Legal Notice</h3>
+                    <ul>
+                        <li><strong>Authorized Use Only:</strong> This toolkit is provided strictly for <em>authorized</em> security assessments and training. You must have explicit permission from the target organization or user before running any simulation.</li>
+                        <li><strong>No Malicious Use:</strong> The materials and source code are harmless examples and must not be used to commit fraud, breach systems, or deceive third parties outside of approved exercises.</li>
+                        <li><strong>Support:</strong> Documentation and safe deployment guidance are included to help run simulations ethically and securely.</li>
+                        <li><strong>Refund Policy:</strong> 7-day refund if unused and within terms of sale.</li>
+                        <li><strong>Compliance:</strong> Buyers are responsible for complying with local laws and organizational policies.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section" aria-labelledby="features-heading">
+            <h2 id="features-heading">💻 Key Features — Phishing Simulation Toolkit</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🧾 Realistic Templates</h3>
+                    <p>High-fidelity mock email and landing page templates designed to mirror common phishing scenarios for training purposes.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⚡ Easy Deployment</h3>
+                    <p>Clear documentation and demo code to deploy simulations in a controlled, consented environment.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔒 Safe By Design</h3>
+                    <p>All assets are non-malicious by default; payloads and traps are simulated and safe. Guidance included to avoid accidental harm.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📚 Training Resources</h3>
+                    <p>Includes post-simulation reporting templates and user-awareness materials to help coaches and security teams run follow-up training.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / compliance -->
+        <section id="contact" style="padding: 40px 0; text-align:center;">
+            <div style="max-width:800px; margin:0 auto; background:var(--bg-color); padding:20px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.03);">
+                <h3>Contact & Compliance</h3>
+                <p style="color:#6c757d; font-size:0.95rem;">
+                    Need a customized, fully-managed simulation or help with safe deployment? Contact our team for authorized engagements and enterprise-level support.
+                </p>
+                <p style="margin-top:10px;"><a href="mailto:security@frontdoor.example" style="color:var(--primary-color); text-decoration:none;">security@frontdoor.example</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 ProxyProtect. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
