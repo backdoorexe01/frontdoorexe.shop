@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Proxy Service</title>
+    
+    <!-- Embedded CSS Styles -->
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #ddd;
+            --bg-color: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .navbar {
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar nav {
+            display: flex;
+        }
+
+        .navbar nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
+        .navbar nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Product Section */
+        .product-page {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to single column for mobile first */
+            gap: 40px;
+            background-color: var(--bg-color);
+            padding: 20px; /* Reduced padding for mobile */
+            border-radius: 8px;
+            margin: 20px auto; /* Centered with margin */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            max-width: 95%; /* Ensure it doesn't touch edges on mobile */
+        }
+        
+        /* Apply two-column layout only on larger screens */
+        @media (min-width: 768px) {
+            .product-page {
+                grid-template-columns: 1fr 1fr;
+                padding: 40px;
+                margin-top: 40px;
+                max-width: 1100px; /* Max width from container */
+            }
+        }
+
+
+        .product-image img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .product-details h1 {
+            font-size: 2.2rem; /* Adjusted for better responsiveness */
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-box {
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .price-cycle {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-left: 5px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            box-sizing: border-box; /* Ensure padding doesn't break width */
+        }
+
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+
+        .terms {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .terms h3 {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .terms ul {
+            padding-left: 20px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 40px 0; /* Reduced padding */
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column for mobile */
+            gap: 20px; /* Reduced gap */
+        }
+        
+        /* Grid layout for tablets and desktops */
+        @media (min-width: 600px) {
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        .feature-item {
+            background-color: var(--bg-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .feature-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 20px; /* Reduced margin */
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--border-color);
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments for navigation */
+        @media (max-width: 600px) {
+            .navbar .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .navbar nav {
+                margin-top: 1rem;
+                margin-left: -1.5rem; /* Align with brand */
+            }
+            
+            .navbar nav a {
+                margin-left: 1.5rem;
+            }
+            
+            .product-details h1 {
+                font-size: 1.8rem; /* Further reduce for small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="nav-brand">ProxyProtect</a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Product Page Section -->
+        <section class="product-page">
+            <div class="product-image">
+                <!-- Placeholder image -->
+                <img src="https://placehold.co/600x400/007bff/white?text=Secure+Proxy&font=sans-serif" alt="Secure Proxy Service">
+            </div>
+            
+            <div class="product-details">
+                <a href="#" class="back-link">← Back to Services</a>
+                <h1>Secure Decentralized Proxy</h1>
+                <p class="product-description">
+                    Enhance your online privacy and security with our high-speed, fully decentralized proxy service. Browse with confidence and protect your digital footprint.
+                </p>
+
+                <div class="price-box">
+                    <span class="price">$5.00</span>
+                    <span class="price-cycle">/ month</span>
+                </div>
+                
+                <button class="buy-button">Get Started Now</button>
+
+                <div class="terms">
+                    <h3>Service Agreement</h3>
+                    <ul>
+                        <li><strong>Service Uptime:</strong> We guarantee 99.9% network uptime.</li>
+                        <li><strong>Support:</strong> 24/7 customer support is available via email and chat.</li>
+                        <li><strong>Refund Policy:</strong> We offer a 7-day money-back guarantee if you are not satisfied with the service.</li>
+                        <li><strong>Usage:</strong> Service must be used in accordance with our Acceptable Use Policy and may not be used for illegal activities.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🌐 Decentralized Network</h3>
+                    <p>Leverages a distributed network for enhanced resilience and privacy.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⚡ Maximum Speed</h3>
+                    <p>Optimized routing and high-bandwidth servers ensure a fast connection.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔒 Robust Security</h3>
+                    <p>End-to-end encryption protects your data from prying eyes.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 ProxyProtect. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
