@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Binning Course — Ethical BINs & Legitimate Free Trials</title>
+  <style>
+    :root{
+      --primary-color:#007bff;
+      --secondary-color:#f8f9fa;
+      --text-color:#222;
+      --bg-color:#fff;
+      --border:#e6e6e6;
+    }
+    *{box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;margin:0;background:var(--secondary-color);color:var(--text-color);line-height:1.6}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .navbar{background:var(--bg-color);border-bottom:1px solid var(--border);padding:1rem 0;box-shadow:0 2px 4px rgba(0,0,0,0.05)}
+    .navbar .container{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .nav-brand{font-size:1.4rem;font-weight:700;color:var(--primary-color);text-decoration:none}
+    nav a{margin-left:1.5rem;color:var(--text-color);text-decoration:none;font-weight:500}
+    nav a:hover{color:var(--primary-color)}
+    .product-page{display:grid;grid-template-columns:1fr;gap:40px;background:var(--bg-color);padding:20px;border-radius:8px;margin:20px auto;box-shadow:0 4px 12px rgba(0,0,0,0.05);max-width:95%}
+    @media(min-width:768px){.product-page{grid-template-columns:1fr 1fr;padding:40px;margin-top:40px;max-width:1100px}}
+    .product-image img{width:100%;height:auto;border-radius:8px;border:1px solid var(--border)}
+    .back-link{display:inline-block;margin-bottom:1rem;color:var(--primary-color);text-decoration:none;font-size:0.9rem}
+    .product-details h1{font-size:2.2rem;margin:0 0 1rem}
+    .product-description{font-size:1.05rem;margin-bottom:1.2rem}
+    .price{font-size:2.2rem;font-weight:700;color:#28a745}
+    .price-cycle{font-size:1rem;color:#6c757d;margin-left:8px}
+    .buy-button{display:inline-block;width:100%;padding:14px;background:var(--primary-color);color:#fff;border:none;border-radius:6px;font-size:1.05rem;font-weight:700;text-align:center;cursor:pointer;text-decoration:none}
+    .buy-button:hover{background:#0056b3}
+    .terms{margin-top:1.8rem;font-size:0.92rem;color:#6c757d}
+    .terms h3{color:var(--text-color);font-size:1.05rem;border-bottom:1px solid var(--border);padding-bottom:6px}
+    .feature-grid{display:grid;grid-template-columns:1fr;gap:20px}
+    @media(min-width:600px){.feature-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}}
+    .feature-item{background:var(--bg-color);padding:24px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.05);text-align:left}
+    .feature-item h3{margin-top:0;color:var(--primary-color)}
+    .content-section{background:var(--bg-color);padding:20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.03)}
+    .tip{background:#e9f7ef;border-left:4px solid #28a745;padding:12px;border-radius:6px;margin:12px 0}
+    .warning{background:#fff3cd;border-left:4px solid #f0ad4e;padding:12px;border-radius:6px;margin:12px 0;color:#856404}
+    .contact-card{max-width:800px;margin:0 auto;background:var(--bg-color);padding:20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.03);text-align:center}
+    .contact-links a{display:inline-block;margin:8px 10px;color:var(--primary-color);text-decoration:none;font-weight:600}
+    .footer{text-align:center;padding:2rem 0;margin-top:20px;background:var(--bg-color);border-top:1px solid var(--border);color:#6c757d;font-size:0.9rem}
+    @media (max-width:600px){
+      .navbar .container{flex-direction:column;align-items:flex-start}
+      nav{margin-top:12px;margin-left:-1.5rem}
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <div class="container">
+      <a class="nav-brand" href="index.html">Front Door.exe Academy</a>
+      <nav aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#free-trials">Free Trials</a>
+        <a href="#ethical-use">Ethical Use</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Product / Course Section -->
+    <section class="product-page" aria-labelledby="course-title">
+      <div class="product-image" aria-hidden="false">
+        <img src="binning.png" alt="Binning Course — Ethical BINs & Free Trials">
+      </div>
+
+      <div class="product-details">
+        <a href="index.html" class="back-link">← Back to Courses</a>
+        <h1 id="course-title">Binning Course — Ethical BINs & Legitimate Free Trials</h1>
+        <p class="product-description">
+          A practical, lawful course for security professionals and developers who want to understand Bank Identification Numbers (BINs), how payment systems use them,
+          how fraud teams detect BIN misuse, and how to legitimately obtain and manage free trials and promotional offers.
+        </p>
+
+        <div class="price-box" id="pricing">
+          <span class="price">Free</span>
+          <span class="price-cycle">— intro guide</span>
+        </div>
+
+        <a href="enroll.html" aria-label="Enroll in course">
+          <button class="buy-button">Enroll — Get Course Materials</button>
+        </a>
+
+        <div class="terms" id="terms">
+          <h3>Important Legal & Ethical Notice</h3>
+          <div class="warning">
+            This course strictly focuses on legal, defensive, and academic topics. It does <strong>not</strong> teach or provide techniques for committing fraud, bypassing payment systems, or abusing free trials. Misuse of payment data or trial offers is illegal and unethical.
+          </div>
+          <ul>
+            <li><strong>Permitted Use:</strong> For security teams, developers, researchers, and educators working with explicit authorization.</li>
+            <li><strong>No Illicit Guidance:</strong> We will not provide instructions on exploiting BINs or abusing trial offers.</li>
+            <li><strong>Compliance:</strong> You are responsible for complying with local laws and organisational policies.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content -->
+    <section id="overview" class="content-section" style="margin-top:20px;">
+      <h2>Course Overview</h2>
+      <p>
+        This course covers:
+      </p>
+      <ul>
+        <li><strong>What is a BIN?</strong> — Bank Identification Numbers (the first 6–8 digits of a payment card) and their legitimate uses in routing, issuing bank identification, and basic merchant categorization.</li>
+        <li><strong>How BINs are used by merchants and processors</strong> — transaction routing, BIN-based risk scoring, and issuer identification.</li>
+        <li><strong>How fraud teams use BIN intelligence</strong> — detecting unusual BIN patterns, spotting mass testing, and protecting customers.</li>
+        <li><strong>Data sources & responsible BIN lookups</strong> — using authorized BIN lookup services and APIs in compliance with terms of service.</li>
+      </ul>
+
+      <div class="tip">
+        Tip: BIN knowledge is valuable for defensive work — building rules to block suspicious BIN ranges, improving fraud-detection models, and triaging chargebacks.
+      </div>
+    </section>
+
+    <section id="free-trials" class="content-section" style="margin-top:20px;">
+      <h2>How to Obtain Free Trials — Legally</h2>
+      <p>
+        Free trials can be obtained and used ethically. Below are legitimate methods that protect both you and the service provider.
+      </p>
+
+      <ol>
+        <li><strong>Use official trial offers</strong> — always sign up through the official website or app. Many services offer time-limited trials (7/14/30 days).</li>
+        <li><strong>Promo codes and partner deals</strong> — look for official promo partnerships, student discounts, or vendor bundles (e.g., developer tools offering free tiers).</li>
+        <li><strong>Developer or sandbox accounts</strong> — many SaaS and payment providers offer sandbox/test environments with fake data for development and testing.</li>
+        <li><strong>Student / educator programs</strong> — many companies provide free or extended trials for verified students and educators.</li>
+        <li><strong>Proper payment info & cancellation</strong> — if a trial requires payment details, use your own legal card, note the trial end date, and cancel before renewal if you don't want to continue.</li>
+      </ol>
+
+      <div class="tip">
+        Tip: Use browser password managers and calendar reminders to track trial start/end dates so you don’t get charged accidentally.
+      </div>
+
+      <h3>What NOT to do</h3>
+      <ul>
+        <li>Do not use fake or stolen payment data to sign up for trials.</li>
+        <li>Do not create multiple disposable accounts to abuse trial offers — that's typically against Terms of Service and may be illegal.</li>
+      </ul>
+    </section>
+
+    <section id="ethical-use" class="content-section" style="margin-top:20px;">
+      <h2>Responsible BIN Research & Defensive Techniques</h2>
+      <p>
+        If you’re working in fraud prevention, here are lawful approaches and tools:
+      </p>
+      <ul>
+        <li><strong>Authorized BIN lookup APIs:</strong> Use your payment processor's or acquirer's BIN lookup APIs under contract for legitimate verification needs.</li>
+        <li><strong>Tokenization & PCI compliance:</strong> Learn how tokenization replaces card data and reduces risk; follow PCI-DSS guidance when handling cardholder data.</li>
+        <li><strong>Monitoring & rate limiting:</strong> Implement rate limits and anomaly detection to prevent automated abuse (credential-stuffing or card-testing).</li>
+        <li><strong>Collaborate with processors:</strong> Work with card networks and banks to escalate suspicious patterns and coordinate blocks when necessary.</li>
+      </ul>
+
+      <div class="tip">
+        Tip: If you're building a fraud detection system, synthetic test data and official sandbox environments are the safest way to validate flows.
+      </div>
+    </section>
+
+    <!-- Features / Benefits -->
+    <section class="content-section" style="margin-top:20px;">
+      <h2>What You Get</h2>
+      <div class="feature-grid" style="margin-top:12px;">
+        <div class="feature-item">
+          <h3>📘 Coursework</h3>
+          <p>Slides and readings explaining BIN structure, tokenization, and defensive use cases.</p>
+        </div>
+        <div class="feature-item">
+          <h3>🔎 Practical Labs</h3>
+          <p>Safe labs using sandbox environments and sample (non-sensitive) datasets to practice detection techniques.</p>
+        </div>
+        <div class="feature-item">
+          <h3>🛡️ Fraud-Prevention Recipes</h3>
+          <p>Rule templates and ideas for building BIN-based signals into your fraud models (defensive only).</p>
+        </div>
+        <div class="feature-item">
+          <h3>📞 Support & Ethics</h3>
+          <p>Guidance on contacting processors, reporting abuse, and operating within legal boundaries.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Card -->
+    <section id="contact" style="padding:40px 0;text-align:center;margin-top:20px;">
+      <div class="contact-card">
+        <h3>Contact & Enrollment</h3>
+        <p style="color:#6c757d;font-size:0.95rem;margin:0 0 8px;">
+          Interested in the full course or enterprise training? Contact us for authorized workshops and secure, ethical engagements.
+        </p>
+
+        <div class="contact-links" style="margin-top:12px;">
+          <a href="mailto:backdoorexe01@gmail.com" title="Email">✉️ backdoorexe01@gmail.com</a>
+          <a href="https://t.me/frontdoorexe" target="_blank" rel="noopener" title="Telegram">💬 @@frontdoorexe</a>
+        </div>
+
+        <p style="margin-top:12px;color:#6c757d;font-size:0.92rem;">
+          We only support and provide training for lawful and authorized security testing.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Front Door.exe Academy. All Rights Reserved.</p>
+    <p style="margin-top:6px;font-size:0.9rem;color:#6c757d;">
+      Contact: <a href="mailto:backdoorexe01@gmail.com" style="color:var(--primary-color);text-decoration:none">backdoorexe01@gmail.com</a> • Telegram: <a href="https://t.me/frontdoorexe" target="_blank" rel="noopener" style="color:var(--primary-color);text-decoration:none">@@frontdoorexe</a>
+    </p>
+  </footer>
+</body>
+</html>
