@@ -1,33 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-R">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Non Vbv Bin Details - FrontDoor.exe</title>
+    <title>Non-VBV BINs | FrontDoor.exe 🔐</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Page Styles -->
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        #bg-video { position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%; z-index: -100; transform: translateX(-50%) translateY(-50%); object-fit: cover; }
-        .card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .btn { transition: all 0.3s ease; } .btn:hover { transform: translateY(-2px); }
-        .btn-primary { background-color: #4F46E5; } .btn-primary:hover { background-color: #4338CA; }
-        .btn-secondary { background-color: rgba(255, 255, 255, 0.2); } .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.3); }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        /* Background video styling */
+        #bg-video { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            min-width: 100%; 
+            min-height: 100%; 
+            width: auto; 
+            height: auto; 
+            z-index: -100; 
+            transform: translateX(-50%) translateY(-50%); 
+            object-fit: cover; 
+        }
+        /* Glassmorphism card effect */
+        .card { 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); 
+        }
+        /* Button styling */
+        .btn { 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+        .btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+        }
+        .btn-primary { background-color: #4F46E5; } 
+        .btn-primary:hover { background-color: #4338CA; }
+        .btn-secondary { background-color: rgba(255, 255, 255, 0.2); } 
+        .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.3); }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
-    <video autoplay muted loop id="bg-video"><source src="bg.mp4" type="video/mp4"></video>
-    <div class="relative min-h-screen flex items-center justify-center p-4">
-        <div class="card max-w-2xl w-full rounded-2xl shadow-lg p-8">
-            <img class="w-full h-64 object-cover rounded-lg mb-6 shadow-md" src="nonvbv.png" alt="Non Vbv Bin">
-            <h1 class="text-4xl font-black mb-3">Non Vbv Bin</h1>
-            <p class="text-gray-300 text-lg mb-6">Non-VBV BINs – Fast & Reliable 💳⚡</p>
-            <div class="text-4xl font-black text-white mb-8">$2</div>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Buy Now</a>
-                <a href="index.html" class="btn btn-secondary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Back to Shop</a>
+
+    <!-- Background Video -->
+    <video autoplay muted loop id="bg-video">
+        <source src="bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="relative min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+
+        <!-- Header with Back Button -->
+        <header class="w-full max-w-5xl mx-auto mb-8 self-start">
+            <a href="index.html" class="btn btn-secondary text-white font-bold py-2 px-4 rounded-lg inline-block">
+                &larr; Back to Shop
+            </a>
+        </header>
+
+        <!-- Main Content Card -->
+        <main class="w-full max-w-5xl mx-auto">
+            <div class="card rounded-2xl overflow-hidden shadow-lg p-6 md:p-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Left Side: Product Image & Buy -->
+                    <div class="flex flex-col items-center">
+                        <img class="w-full h-64 object-cover rounded-lg mb-4 shadow-md" 
+                             src="nonvbv.png" 
+                             alt="Non-VBV BIN" 
+                             onerror="this.src='https://placehold.co/600x400/172554/FFFFFF?text=Non-VBV+BIN';">
+                        <div class="text-5xl font-black text-white mb-6">$2</div>
+                        <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full text-lg">
+                            Buy Now
+                        </a>
+                    </div>
+
+                    <!-- Right Side: Product Details & Terms -->
+                    <div>
+                        <h1 class="text-4xl font-black tracking-tighter mb-2">Non-VBV BINs – Fast & Reliable 💳⚡</h1>
+                        <p class="text-lg text-gray-300 mb-6">
+                            Get access to our exclusive list of Non-VBV BINs. These are optimized for fast and reliable transactions, bypassing 3D secure protocols for maximum efficiency and success.
+                        </p>
+
+                        <!-- Terms and Conditions Section (Identical to cc.html) -->
+                        <div class="border-t border-gray-600 pt-6">
+                            <h2 class="text-2xl font-bold mb-4 text-yellow-400">⚠️ Important: Terms & Conditions</h2>
+                            <p class="mb-4 text-gray-300">You MUST agree to the following terms before purchasing:</p>
+                            
+                            <ul class="list-disc list-outside space-y-2 pl-5 text-gray-200">
+                                <li>
+                                    <span class="font-bold">NO REFUNDS:</span> All sales are final. Once the product is delivered, there are absolutely no refunds or exchanges.
+                                </li>
+                               
+                                <li>
+                                    <span class="font-bold">NO GUIDANCE FOR USAGE:</span> We do NOT provide any support, tutorials, or guidance on how to use these items. You are expected to know what you are doing.
+                                </li>
+                                <li>
+                                    <span class="font-bold">NO AFTER-SALES GUARANTEE:</span> There is no guarantee on the item after it has been sold and delivered to you. All responsibility is yours post-purchase.
+                                </li>
+                            </ul>
+                            
+                            <!-- Final Warning -->
+                            <p class="mt-6 font-bold text-red-400 bg-red-900 bg-opacity-30 p-3 rounded-lg">
+                                By clicking "Buy Now", you confirm that you have read, understood, and agreed to all of these terms.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-400">
+            <p>&copy; 2025 Front Door.EXE All Rights Reserved.</p>
+        </footer>
     </div>
+
 </body>
 </html>
