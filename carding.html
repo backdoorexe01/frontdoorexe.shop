@@ -1,1 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Security Course | Trend Hive Academy</title>
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        /* Background video styling */
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+        /* Glassmorphism card */
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.35);
+        }
+        .btn {
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .btn:hover { transform: translateY(-3px); }
+        .btn-primary { background-color: #4F46E5; }
+        .btn-primary:hover { background-color: #4338CA; }
+        .btn-secondary { background-color: rgba(255,255,255,0.06); }
+        .benefit-icon {
+            width: 44px;
+            height: 44px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:10px;
+            background: rgba(255,255,255,0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Background Video (optional) -->
+    <video autoplay muted loop id="bg-video">
+        <source src="bg.mp4" type="video/mp4">
+        <!-- if no video, browser will ignore -->
+    </video>
+
+    <div class="relative min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+
+        <!-- Header with Back Button -->
+        <header class="w-full max-w-5xl mx-auto mb-8 self-start">
+            <a href="index.html" class="btn btn-secondary text-white font-semibold py-2 px-4 rounded-lg inline-block">
+                &larr; Back to Shop
+            </a>
+        </header>
+
+        <!-- Main Content Card -->
+        <main class="w-full max-w-5xl mx-auto">
+            <div class="card rounded-2xl overflow-hidden shadow-lg p-6 md:p-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Left Side: Product Image & Buy -->
+                    <div class="flex flex-col items-center">
+                        <!-- image name unchanged as you requested -->
+                        <img class="w-full h-64 object-cover rounded-lg mb-4 shadow-md"
+                             src="carding.png"
+                             alt="Payment Security Course"
+                             onerror="this.src='https://placehold.co/600x400/172554/FFFFFF?text=Course+Image';">
+                        <div class="text-4xl font-extrabold text-white mb-3">₹1,199</div>
+                        <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full text-lg">
+                            Enroll Now
+                        </a>
+
+                        <p class="text-sm text-gray-300 mt-3 text-center">
+                            Instant access • Lifetime updates • Certificate of Completion
+                        </p>
+                    </div>
+
+                    <!-- Right Side: Product Details & Benefits -->
+                    <div>
+                        <h1 class="text-4xl font-black tracking-tighter mb-3">Payment Security & Fraud-Prevention</h1>
+                        <p class="text-lg text-gray-300 mb-6">
+                            A practical, lawful course for developers, security engineers and fraud analysts. Learn how payment systems work, how fraud is detected, and how to secure payment flows — ethically and legally.
+                        </p>
+
+                        <!-- Benefits Section -->
+                        <div class="space-y-4">
+                            <h2 class="text-2xl font-bold mb-3 text-green-400">Why buy this course?</h2>
+
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-4">
+                                    <div class="benefit-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Hands-on, Legal Labs</div>
+                                        <div class="text-sm text-gray-300">Practice secure payment integration, detection techniques and incident response in legal lab environments.</div>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-start gap-4">
+                                    <div class="benefit-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-3.866 3.582-7 8-7" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Real-World Detection Skills</div>
+                                        <div class="text-sm text-gray-300">Learn how to spot common fraud signals, reduce chargebacks, and protect customer data.</div>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-start gap-4">
+                                    <div class="benefit-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Career-Ready Certificate</div>
+                                        <div class="text-sm text-gray-300">Receive a certificate you can showcase on your resume or LinkedIn after course completion.</div>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-start gap-4">
+                                    <div class="benefit-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Lifetime Access & Updates</div>
+                                        <div class="text-sm text-gray-300">Course materials are updated regularly to reflect new payment security best practices and tools.</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Course Highlights -->
+                        <div class="border-t border-gray-700 pt-6 mt-6">
+                            <h3 class="text-xl font-bold mb-3">Course Highlights</h3>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-200">
+                                <li>Overview of payment flows (card networks, PSPs, gateways)</li>
+                                <li>PCI DSS essentials and secure implementation patterns</li>
+                                <li>Fraud detection: heuristics, ML basics, and rule engines</li>
+                                <li>Secure coding for payment forms and tokenization</li>
+                                <li>Ethical testing & responsible disclosure</li>
+                            </ul>
+                        </div>
+
+                        <!-- CTA small note -->
+                        <p class="mt-6 text-sm text-gray-400">
+                            Questions? Contact us at <span class="text-white font-medium">backdoorexe01@gmail.com</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-400">
+            <p>&copy; 2025 Trend Hive Academy. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
