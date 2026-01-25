@@ -3,122 +3,471 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FrontDoor.exe | Your Gateway to Carding 🔐</title>
+    <title>FrontDoor.exe | System Access</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            black: '#020202',
+                            dark: '#0a0a12',
+                            primary: '#00f3ff', // Cyan
+                            secondary: '#bc13fe', // Purple
+                            success: '#00ff41', // Matrix Green
+                            dim: 'rgba(0, 243, 255, 0.1)'
+                        }
+                    },
+                    fontFamily: {
+                        header: ['Orbitron', 'sans-serif'],
+                        mono: ['Share Tech Mono', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 3s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        #bg-video { position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -100; transform: translateX(-50%) translateY(-50%); object-fit: cover; }
-        .card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); }
-        .btn { transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); }
-        .btn-primary { background-color: #4F46E5; } .btn-primary:hover { background-color: #4338CA; }
-        .btn-secondary { background-color: rgba(255, 255, 255, 0.2); } .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.3); }
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: #050505;
+            overflow-x: hidden;
+            color: #e0e0e0;
+        }
+
+        /* Matrix Canvas Background */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Glitch Effect for Title */
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch {
+            position: relative;
+            color: #fff;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 0px #bc13fe, -2px -2px 0px #00f3ff;
+        }
+
+        @media (max-width: 768px) {
+            .glitch { font-size: 2.5rem; }
+        }
+
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -1px 0 #00f3ff;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -1px 0 #bc13fe;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(13px, 9999px, 81px, 0); }
+            5% { clip: rect(89px, 9999px, 86px, 0); }
+            10% { clip: rect(6px, 9999px, 12px, 0); }
+            15% { clip: rect(54px, 9999px, 46px, 0); }
+            20% { clip: rect(22px, 9999px, 16px, 0); }
+            25% { clip: rect(84px, 9999px, 4px, 0); }
+            30% { clip: rect(38px, 9999px, 53px, 0); }
+            35% { clip: rect(10px, 9999px, 96px, 0); }
+            40% { clip: rect(51px, 9999px, 88px, 0); }
+            45% { clip: rect(2px, 9999px, 64px, 0); }
+            50% { clip: rect(66px, 9999px, 13px, 0); }
+            100% { clip: rect(36px, 9999px, 79px, 0); }
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(58px, 9999px, 40px, 0); }
+            5% { clip: rect(15px, 9999px, 31px, 0); }
+            10% { clip: rect(85px, 9999px, 66px, 0); }
+            15% { clip: rect(2px, 9999px, 92px, 0); }
+            20% { clip: rect(59px, 9999px, 13px, 0); }
+            25% { clip: rect(31px, 9999px, 73px, 0); }
+            30% { clip: rect(93px, 9999px, 5px, 0); }
+            35% { clip: rect(6px, 9999px, 38px, 0); }
+            40% { clip: rect(44px, 9999px, 81px, 0); }
+            45% { clip: rect(26px, 9999px, 63px, 0); }
+            50% { clip: rect(78px, 9999px, 16px, 0); }
+            100% { clip: rect(19px, 9999px, 46px, 0); }
+        }
+
+        /* Cyber Card Styles */
+        .cyber-card {
+            background: rgba(10, 10, 18, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #00f3ff;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .cyber-card:hover::before {
+            left: 100%;
+        }
+
+        .cyber-card .corner {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #00f3ff;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+
+        .cyber-card:hover .corner {
+            width: 20px;
+            height: 20px;
+            opacity: 1;
+        }
+
+        .corner-tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+        .corner-tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+        .corner-br { bottom: 0; right: 0; border-left: none; border-top: none; }
+        .corner-bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+
+        /* Button Styles */
+        .btn-cyber-primary {
+            background: linear-gradient(45deg, #00f3ff, #0066ff);
+            color: #000;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+
+        .btn-cyber-primary::after {
+            content: '';
+            position: absolute;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            background: #000;
+            z-index: -1;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+            transition: all 0.3s;
+        }
+
+        .btn-cyber-primary:hover::after {
+            background: #00f3ff;
+        }
+        
+        .btn-cyber-primary:hover span {
+            color: #000;
+            font-weight: 800;
+        }
+
+        .btn-cyber-secondary {
+            border: 1px solid #bc13fe;
+            color: #bc13fe;
+        }
+
+        .btn-cyber-secondary:hover {
+            background: rgba(188, 19, 254, 0.1);
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+        }
+
+        /* Scanline Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="min-h-screen flex flex-col items-center">
 
-    <video autoplay muted loop id="bg-video">
-        <source src="bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <!-- Backgrounds -->
+    <canvas id="matrix-canvas"></canvas>
+    <div class="scanlines"></div>
 
-    <div class="relative min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+    <!-- Main Container -->
+    <div class="relative w-full max-w-7xl mx-auto px-4 py-8 md:py-16 z-10">
         
-        <header class="text-center mb-12">
-            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-2">Front Door.exe Shop</h1>
-            <p class="text-lg md:text-xl text-gray-300">Your Gateway to Carding 🔐</p>
+        <!-- Header -->
+        <header class="text-center mb-20 relative">
+            <div class="inline-block relative animate-float">
+                <div class="glitch-wrapper mb-4">
+                    <h1 class="glitch font-header" data-text="FrontDoor.EXE">FrontDoor.EXE</h1>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-center gap-2 text-cyber-primary mt-4">
+                <span class="animate-pulse">●</span>
+                <p id="typewriter" class="text-xl md:text-2xl text-gray-300 font-mono tracking-widest border-r-2 border-cyber-primary pr-2"></p>
+            </div>
+            
+            <!-- Decor elements -->
+            <div class="absolute top-0 right-0 hidden md:block opacity-50">
+                <div class="text-[10px] text-cyber-success text-right">
+                    SYS.STATUS: ONLINE<br>
+                    SEC.LEVEL: 0x99<br>
+                    IP: HIDDEN
+                </div>
+            </div>
         </header>
 
-        <main class="w-full max-w-7xl mx-auto">
-            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
+        <!-- Product Grid -->
+        <main>
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
+                <!-- Content injected by JS -->
+            </div>
         </main>
         
-        <footer class="text-center mt-12 text-gray-400">
-            <p>&copy; 2025 Front Door.EXE All Rights Reserved.</p>
+        <!-- Footer -->
+        <footer class="text-center mt-auto py-8 border-t border-cyber-dim">
+            <p class="text-gray-500 text-sm font-mono">
+                &copy; 2025 FRONT DOOR.EXE // SYSTEM SECURE <span class="text-cyber-primary">●</span> ALL RIGHTS RESERVED
+            </p>
         </footer>
     </div>
 
     <script>
+        // --- 1. Matrix Background Effect ---
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const chars = '01010100011101001FRONTDOOR0101SYSTEM0101';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0'; // Green text
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                // Randomly color some characters Cyan/Purple for variety
+                if(Math.random() > 0.98) ctx.fillStyle = '#00f3ff';
+                else if(Math.random() > 0.98) ctx.fillStyle = '#bc13fe';
+                else ctx.fillStyle = '#00ff41'; // Default matrix green
+
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 33);
+
+        // --- 2. Typing Effect ---
+        const textToType = "Your Gateway to Carding 🔐";
+        const typeWriterElement = document.getElementById('typewriter');
+        let typeIndex = 0;
+
+        function typeWriter() {
+            if (typeIndex < textToType.length) {
+                typeWriterElement.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // Blink cursor effect by toggling border color
+                setInterval(() => {
+                    typeWriterElement.classList.toggle('border-transparent');
+                    typeWriterElement.classList.toggle('border-cyber-primary');
+                }, 500);
+            }
+        }
+
+        // --- 3. Product Data & Rendering ---
         document.addEventListener('DOMContentLoaded', function() {
+            // Start typewriter
+            setTimeout(typeWriter, 1000);
+
             const products = [
                 {
-                    id: 1, name: '💳Carding Course⚡',
-                    description: '💥 Master Carding Step by Step',
-                    price: '50', imageUrl: 'carding.png', detailsUrl: 'carding.html'
-                },
-				{
-                    id: 2, name: 'Binning',
-                    description: '🎁 Get instant access to free trials today, no cost!',
-                    price: '10', imageUrl: 'binning.png', detailsUrl: 'binning.html'
-                },
-				{
-                    id: 3, name: 'RDP',
-                    description: '💻 Most decentralized & bulletproof RDP ✅ Lowest cost, maximum security 🔒',
-                    price: ' Check Details For Pricing', imageUrl: 'rdp.png', detailsUrl: 'rdp.html'
+                    id: 1, name: 'Carding Course ⚡',
+                    description: 'Master Carding Step by Step. Full protocol access.',
+                    price: '50', imageUrl: 'carding.png', detailsUrl: 'carding.html', tag: 'EDUCATION'
                 },
                 {
-                    id: 4, name: 'CC',
-                    description: 'Top-Quality CCS at the Lowest Prices 💳🔥',
-                    price: '10', imageUrl: 'cc.png', detailsUrl: 'cc.html'
+                    id: 2, name: 'Binning Tools',
+                    description: 'Instant access to free trials. Zero cost entry.',
+                    price: '10', imageUrl: 'binning.png', detailsUrl: 'binning.html', tag: 'TOOLS'
+                },
+                {
+                    id: 3, name: 'Bulletproof RDP',
+                    description: 'Decentralized & Anonymous. Max security lockdown.',
+                    price: 'VARIES', imageUrl: 'rdp.png', detailsUrl: 'rdp.html', tag: 'INFRA'
+                },
+                {
+                    id: 4, name: 'Premium CC',
+                    description: 'Top-Quality Material. High balance probability.',
+                    price: '10', imageUrl: 'cc.png', detailsUrl: 'cc.html', tag: 'DATA'
                 },
                 {
                     id: 5, name: 'Non Vbv Bin',
-                    description: 'Non-VBV BINs – Fast & Reliable 💳⚡',
-                    price: '2', imageUrl: 'nonvbv.png', detailsUrl: 'non.html'
+                    description: 'Fast & Reliable Non-VBV BINs. 2fa Bypass capable.',
+                    price: '2', imageUrl: 'nonvbv.png', detailsUrl: 'non.html', tag: 'DATA'
                 },
                 {
-                    id: 6, name: 'Proxy',
-                    description: '⚡ Fast & Fully Decentralized Proxy – Maximum Speed & Security 🌐',
-                    price: '20', imageUrl: 'proxy.png', detailsUrl: 'proxy.html'
+                    id: 6, name: 'Decentralized Proxy',
+                    description: 'Residental IPs. Maximum Speed & Anonymity.',
+                    price: '20', imageUrl: 'proxy.png', detailsUrl: 'proxy.html', tag: 'NETWORK'
                 },
                 {
-                    id: 7, name: 'CC Dumps',
-                    description: '💳 Fresh & High-Quality Dumps – Reliable & Verified ✅',
-                    price: '80', imageUrl: 'ccdumps.png', detailsUrl: 'cc-dumps.html'
+                    id: 7, name: 'HQ Dumps',
+                    description: 'Fresh Sniffed Data. Track 1/2 available.',
+                    price: '80', imageUrl: 'ccdumps.png', detailsUrl: 'cc-dumps.html', tag: 'DATA'
                 },
                 {
-                    id: 8, name: 'Phishing Sites',
-                    description: '💻 Best & Realistic – Comes with Full Source Code ✅',
-                    price: '25', imageUrl: 'phishing.png', detailsUrl: 'phishing-sites.html'
+                    id: 8, name: 'Phishing Scamas',
+                    description: 'Realistic 1:1 Clones. Includes full source code.',
+                    price: '25', imageUrl: 'phishing.png', detailsUrl: 'phishing-sites.html', tag: 'SOURCE'
                 },
-		        {
+                {
                     id: 9, name: 'CC Generator Script',
-                    description: '💻 Luhn & All Sums Check ✅ Fully Verified Script ⚡',
-                    price: '6', imageUrl: 'ccgenerator.png', detailsUrl: 'cc-generator-script.html'
+                    description: 'Luhn Algo Check + BIN Validation logic.',
+                    price: '6', imageUrl: 'ccgenerator.png', detailsUrl: 'cc-generator-script.html', tag: 'SCRIPT'
                 },
-		        {
-                    id: 10, name: 'VBV / Non VBV Checker Script',
-                    description: '💳 100% VBV & Non-VBV Results ✅ Reliable & Verified ⚡',
-                    price: '15', imageUrl: 'vv.png', detailsUrl: 'vbv-checker-script.html'
+                {
+                    id: 10, name: 'VBV Checker',
+                    description: 'Active/Dead Validator. Gate bypass logic included.',
+                    price: '15', imageUrl: 'vv.png', detailsUrl: 'vbv-checker-script.html', tag: 'SCRIPT'
                 }
             ];
 
             const productGrid = document.getElementById('product-grid');
-            productGrid.innerHTML = products.map(product => `
-                <div class="card rounded-2xl overflow-hidden shadow-lg p-6 flex flex-col">
-                    <img class="w-full h-48 object-cover rounded-lg mb-4 shadow-md" src="${product.imageUrl}" alt="${product.name}" onerror="this.src='https://placehold.co/600x400/172554/FFFFFF?text=Image+Not+Found';">
-                    <div class="flex-grow flex flex-col">
-                        <h3 class="text-2xl font-bold mb-2">${product.name}</h3>
-                        <p class="text-gray-300 mb-4 flex-grow">${product.description}</p>
-                        <div class="text-3xl font-black text-white mb-6">$${product.price}</div>
-                        <div class="flex flex-col sm:flex-row gap-4 mt-auto">
-                            <a href="payments.html" class="btn btn-primary text-white font-bold py-3 px-6 rounded-lg text-center w-full">Buy Now</a>
-                            <a href="${product.detailsUrl}" class="btn btn-secondary text-white font-bold py-3 px-6 rounded-lg text-center w-full">View Details</a>
+            
+            // Generate HTML with delays for staggered animation
+            productGrid.innerHTML = products.map((product, index) => `
+                <div class="cyber-card rounded-xl p-0 flex flex-col group opacity-0 animate-fade-in-up" style="animation: fadeInUp 0.5s ease forwards ${index * 0.1}s;">
+                    <!-- Decorative Corners -->
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+
+                    <!-- Image Section -->
+                    <div class="relative h-48 overflow-hidden border-b border-gray-800">
+                        <div class="absolute top-2 right-2 z-10 bg-black/80 text-cyber-primary text-xs px-2 py-1 rounded border border-cyber-primary font-bold">
+                            ${product.tag || 'SECURE'}
+                        </div>
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:opacity-80" 
+                             src="${product.imageUrl}" 
+                             alt="${product.name}" 
+                             onerror="this.src='https://placehold.co/600x400/000000/00f3ff?text=ENCRYPTED+DATA';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="p-6 flex-grow flex flex-col relative">
+                        <h3 class="text-2xl font-header font-bold mb-2 text-white group-hover:text-cyber-primary transition-colors">
+                            <span class="text-cyber-secondary mr-2">></span>${product.name}
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm leading-relaxed border-l-2 border-gray-700 pl-3 group-hover:border-cyber-primary transition-colors">
+                            ${product.description}
+                        </p>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-800/50">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-cyber-success uppercase tracking-widest">Available</div>
+                                <div class="text-2xl font-black text-white">$${product.price}</div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="payments.html" class="btn-cyber-primary py-3 px-4 text-center font-bold text-sm tracking-wider group-hover:shadow-[0_0_15px_#00f3ff]">
+                                    <span class="relative z-10 text-black">BUY ACCESS</span>
+                                </a>
+                                <a href="${product.detailsUrl}" class="btn-cyber-secondary py-3 px-4 rounded text-center font-bold text-sm tracking-wider transition-all">
+                                    DETAILS
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             `).join('');
         });
     </script>
+    
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 
 </body>
-
 </html>
