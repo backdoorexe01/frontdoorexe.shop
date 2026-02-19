@@ -1,494 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FrontDoor.exe | System Access</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cyber: {
-                            black: '#020202',
-                            dark: '#0a0a12',
-                            primary: '#00f3ff', // Cyan
-                            secondary: '#bc13fe', // Purple
-                            success: '#00ff41', // Matrix Green
-                            dim: 'rgba(0, 243, 255, 0.1)'
-                        }
-                    },
-                    fontFamily: {
-                        header: ['Orbitron', 'sans-serif'],
-                        mono: ['Share Tech Mono', 'monospace'],
-                    },
-                    animation: {
-                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 3s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrontDoor.exe | System Access</title>
 
-    <style>
-        body {
-            font-family: 'Share Tech Mono', monospace;
-            background-color: #050505;
-            overflow-x: hidden;
-            color: #e0e0e0;
-        }
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-        /* Matrix Canvas Background */
-        #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.4;
-        }
+<script>
+tailwind.config = {
+theme:{
+extend:{
+colors:{
+cyber:{
+black:'#020202',
+dark:'#0a0a12',
+primary:'#00f3ff',
+secondary:'#bc13fe',
+success:'#00ff41',
+dim:'rgba(0,243,255,0.1)'
+}},
+fontFamily:{
+header:['Orbitron','sans-serif'],
+mono:['Share Tech Mono','monospace'],
+}}}}
+</script>
 
-        /* Glitch Effect for Title */
-        .glitch-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .glitch {
-            position: relative;
-            color: #fff;
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: -2px;
-            text-shadow: 2px 2px 0px #bc13fe, -2px -2px 0px #00f3ff;
-        }
+<style>
+body{font-family:'Share Tech Mono',monospace;background:#050505;color:#e0e0e0;overflow-x:hidden}
+#matrix-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:.4}
 
-        @media (max-width: 768px) {
-            .glitch { font-size: 2.5rem; }
-        }
+.glitch{font-size:4rem;font-weight:900;text-shadow:2px 2px #bc13fe,-2px -2px #00f3ff}
+@media(max-width:768px){.glitch{font-size:2.5rem}}
 
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #050505;
-        }
+.cyber-card{background:rgba(10,10,18,.7);border:1px solid rgba(0,243,255,.2);transition:.4s}
+.cyber-card:hover{transform:translateY(-5px) scale(1.02);border-color:#00f3ff;box-shadow:0 0 20px rgba(0,243,255,.2)}
 
-        .glitch::before {
-            left: 2px;
-            text-shadow: -1px 0 #00f3ff;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-        }
+.btn-cyber-primary{background:linear-gradient(45deg,#00f3ff,#0066ff);color:#000}
+.btn-cyber-secondary{border:1px solid #bc13fe;color:#bc13fe}
+.btn-cyber-secondary:hover{background:rgba(188,19,254,.1)}
 
-        .glitch::after {
-            left: -2px;
-            text-shadow: -1px 0 #bc13fe;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(13px, 9999px, 81px, 0); }
-            5% { clip: rect(89px, 9999px, 86px, 0); }
-            10% { clip: rect(6px, 9999px, 12px, 0); }
-            15% { clip: rect(54px, 9999px, 46px, 0); }
-            20% { clip: rect(22px, 9999px, 16px, 0); }
-            25% { clip: rect(84px, 9999px, 4px, 0); }
-            30% { clip: rect(38px, 9999px, 53px, 0); }
-            35% { clip: rect(10px, 9999px, 96px, 0); }
-            40% { clip: rect(51px, 9999px, 88px, 0); }
-            45% { clip: rect(2px, 9999px, 64px, 0); }
-            50% { clip: rect(66px, 9999px, 13px, 0); }
-            100% { clip: rect(36px, 9999px, 79px, 0); }
-        }
-
-        @keyframes glitch-anim2 {
-            0% { clip: rect(58px, 9999px, 40px, 0); }
-            5% { clip: rect(15px, 9999px, 31px, 0); }
-            10% { clip: rect(85px, 9999px, 66px, 0); }
-            15% { clip: rect(2px, 9999px, 92px, 0); }
-            20% { clip: rect(59px, 9999px, 13px, 0); }
-            25% { clip: rect(31px, 9999px, 73px, 0); }
-            30% { clip: rect(93px, 9999px, 5px, 0); }
-            35% { clip: rect(6px, 9999px, 38px, 0); }
-            40% { clip: rect(44px, 9999px, 81px, 0); }
-            45% { clip: rect(26px, 9999px, 63px, 0); }
-            50% { clip: rect(78px, 9999px, 16px, 0); }
-            100% { clip: rect(19px, 9999px, 46px, 0); }
-        }
-
-        /* Cyber Card Styles */
-        .cyber-card {
-            background: rgba(10, 10, 18, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .cyber-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.1), transparent);
-            transition: 0.5s;
-        }
-
-        .cyber-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: #00f3ff;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
-        }
-
-        .cyber-card:hover::before {
-            left: 100%;
-        }
-
-        .cyber-card .corner {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border: 2px solid #00f3ff;
-            transition: all 0.3s ease;
-            opacity: 0.5;
-        }
-
-        .cyber-card:hover .corner {
-            width: 20px;
-            height: 20px;
-            opacity: 1;
-        }
-
-        .corner-tl { top: 0; left: 0; border-right: none; border-bottom: none; }
-        .corner-tr { top: 0; right: 0; border-left: none; border-bottom: none; }
-        .corner-br { bottom: 0; right: 0; border-left: none; border-top: none; }
-        .corner-bl { bottom: 0; left: 0; border-right: none; border-top: none; }
-
-        /* Button Styles */
-        .btn-cyber-primary {
-            background: linear-gradient(45deg, #00f3ff, #0066ff);
-            color: #000;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
-        }
-
-        .btn-cyber-primary::after {
-            content: '';
-            position: absolute;
-            top: 2px; left: 2px; right: 2px; bottom: 2px;
-            background: #000;
-            z-index: -1;
-            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
-            transition: all 0.3s;
-        }
-
-        .btn-cyber-primary:hover::after {
-            background: #00f3ff;
-        }
-        
-        .btn-cyber-primary:hover span {
-            color: #000;
-            font-weight: 800;
-        }
-
-        .btn-cyber-secondary {
-            border: 1px solid #bc13fe;
-            color: #bc13fe;
-        }
-
-        .btn-cyber-secondary:hover {
-            background: rgba(188, 19, 254, 0.1);
-            box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
-        }
-
-        /* Scanline Overlay */
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 50;
-        }
-    </style>
+.scanlines{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.1) 50%);background-size:100% 4px;pointer-events:none;z-index:50}
+</style>
 </head>
+
 <body class="min-h-screen flex flex-col items-center">
 
-    <!-- Backgrounds -->
-    <canvas id="matrix-canvas"></canvas>
-    <div class="scanlines"></div>
+<canvas id="matrix-canvas"></canvas>
+<div class="scanlines"></div>
 
-    <!-- Main Container -->
-    <div class="relative w-full max-w-7xl mx-auto px-4 py-8 md:py-16 z-10">
-        
-        <!-- Header -->
-        <header class="text-center mb-20 relative">
-            <div class="inline-block relative animate-float">
-                <div class="glitch-wrapper mb-4">
-                    <h1 class="glitch font-header" data-text="FrontDoor.EXE">FrontDoor.EXE</h1>
-                </div>
-            </div>
-            
-            <div class="flex items-center justify-center gap-2 text-cyber-primary mt-4">
-                <span class="animate-pulse">●</span>
-                <p id="typewriter" class="text-xl md:text-2xl text-gray-300 font-mono tracking-widest border-r-2 border-cyber-primary pr-2"></p>
-            </div>
-            
-            <!-- Decor elements -->
-            <div class="absolute top-0 right-0 hidden md:block opacity-50">
-                <div class="text-[10px] text-cyber-success text-right">
-                    SYS.STATUS: ONLINE<br>
-                    SEC.LEVEL: 0x99<br>
-                    IP: HIDDEN
-                </div>
-            </div>
-        </header>
+<div class="relative w-full max-w-7xl mx-auto px-4 py-12 z-10">
 
-        <!-- Product Grid -->
-        <main>
-            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
-                <!-- Content injected by JS -->
-            </div>
-        </main>
-        
-        <!-- Footer -->
-        <footer class="text-center mt-auto py-8 border-t border-cyber-dim">
-            <p class="text-gray-500 text-sm font-mono">
-                &copy; 2025 FRONT DOOR.EXE // SYSTEM SECURE <span class="text-cyber-primary">●</span> ALL RIGHTS RESERVED
-            </p>
-        </footer>
-    </div>
+<header class="text-center mb-16">
+<h1 class="glitch font-header">FrontDoor.EXE</h1>
+<p id="typewriter" class="text-xl text-gray-300 font-mono mt-4 border-r-2 border-cyber-primary pr-2"></p>
+</header>
 
-    <script>
-        // --- 1. Matrix Background Effect ---
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
+<main>
+<div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20"></div>
+</main>
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+<footer class="text-center mt-auto py-8 border-t border-cyber-dim">
+<p class="text-gray-500 text-sm font-mono">
+© 2025 FRONT DOOR.EXE ● ALL RIGHTS RESERVED
+</p>
+</footer>
 
-        const chars = '01010100011101001FRONTDOOR0101SYSTEM0101';
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
+</div>
 
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
+<script>
+// MATRIX BACKGROUND
+const canvas=document.getElementById('matrix-canvas');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+resize();addEventListener('resize',resize);
 
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+const chars='010101FRONTDOOR';
+const fontSize=14;
+const columns=canvas.width/fontSize;
+const drops=[];
+for(let i=0;i<columns;i++)drops[i]=1;
 
-            ctx.fillStyle = '#0F0'; // Green text
-            ctx.font = fontSize + 'px monospace';
+function draw(){
+ctx.fillStyle='rgba(5,5,5,.05)';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.font=fontSize+'px monospace';
 
-            for(let i = 0; i < drops.length; i++) {
-                const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                // Randomly color some characters Cyan/Purple for variety
-                if(Math.random() > 0.98) ctx.fillStyle = '#00f3ff';
-                else if(Math.random() > 0.98) ctx.fillStyle = '#bc13fe';
-                else ctx.fillStyle = '#00ff41'; // Default matrix green
+for(let i=0;i<drops.length;i++){
+const text=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillStyle='#00ff41';
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+if(drops[i]*fontSize>canvas.height&&Math.random()>.975)drops[i]=0;
+drops[i]++;
+}}
+setInterval(draw,33);
 
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrix, 33);
+// TYPEWRITER
+const text="Your Gateway to Carding 🔐";
+const el=document.getElementById('typewriter');
+let i=0;
+function type(){
+if(i<text.length){el.innerHTML+=text[i++];setTimeout(type,80);}
+}
+type();
 
-        // --- 2. Typing Effect ---
-        const textToType = "Your Gateway to Carding 🔐";
-        const typeWriterElement = document.getElementById('typewriter');
-        let typeIndex = 0;
 
-        function typeWriter() {
-            if (typeIndex < textToType.length) {
-                typeWriterElement.innerHTML += textToType.charAt(typeIndex);
-                typeIndex++;
-                setTimeout(typeWriter, 100);
-            } else {
-                // Blink cursor effect by toggling border color
-                setInterval(() => {
-                    typeWriterElement.classList.toggle('border-transparent');
-                    typeWriterElement.classList.toggle('border-cyber-primary');
-                }, 500);
-            }
-        }
+// PRODUCTS
+document.addEventListener('DOMContentLoaded',function(){
 
-        // --- 3. Product Data & Rendering ---
-        document.addEventListener('DOMContentLoaded', function() {
-            // Start typewriter
-            setTimeout(typeWriter, 1000);
+const products=[
+{id:1,name:'Carding Course ⚡',description:'Master Carding Step by Step.',price:'50',imageUrl:'carding.png',detailsUrl:'carding.html',tag:'EDUCATION'},
+{id:12,name:'Binning Tools',description:'Instant access trials.',price:'10',imageUrl:'binning.png',detailsUrl:'binning.html',tag:'TOOLS'},
+{id:13,name:'Bulletproof RDP',description:'Decentralized anonymous.',price:'VARIES',imageUrl:'rdp.png',detailsUrl:'rdp.html',tag:'INFRA'},
+{id:2,name:'Premium CC',description:'High balance probability.',price:'10',imageUrl:'cc.png',detailsUrl:'cc.html',tag:'DATA'},
+{id:11,name:'Non Vbv Bin',description:'Fast reliable bins.',price:'2',imageUrl:'nonvbv.png',detailsUrl:'non.html',tag:'DATA'},
+{id:6,name:'Decentralized Proxy',description:'Residential IPs.',price:'20',imageUrl:'proxy.png',detailsUrl:'proxy.html',tag:'NETWORK'},
+{id:7,name:'HQ Dumps',description:'Fresh data track1/2.',price:'80',imageUrl:'ccdumps.png',detailsUrl:'cc-dumps.html',tag:'DATA'},
+{id:8,name:'Phishing Scamas',description:'Realistic clones.',price:'25',imageUrl:'phishing.png',detailsUrl:'phishing-sites.html',tag:'SOURCE'},
+{id:9,name:'CC Generator Script',description:'Luhn check logic.',price:'6',imageUrl:'ccgenerator.png',detailsUrl:'cc-generator-script.html',tag:'SCRIPT'},
+{id:10,name:'VBV Checker',description:'Validator logic.',price:'15',imageUrl:'vv.png',detailsUrl:'vbv-checker-script.html',tag:'SCRIPT'},
+{id:4,name:'Enroll',description:'Full bank data.',price:'35',imageUrl:'enroll.jpeg',detailsUrl:'enroll.html',tag:'DATA'},
+{id:3,name:'Gift Cards',description:'Verified giftcards.',price:'10',imageUrl:'giftcard.jpeg',detailsUrl:'giftcards.html',tag:'PRODUCT'},
+{id:5,name:'Bank Logs',description:'High balance accounts.',price:'150',imageUrl:'banklogs.jpeg',detailsUrl:'banklogs.html',tag:'DATA'}
+];
 
-            const products = [
-                {
-                    id: 1, name: 'Carding Course ⚡',
-                    description: 'Master Carding Step by Step. Full protocol access.',
-                    price: '50', imageUrl: 'carding.png', detailsUrl: 'carding.html', tag: 'EDUCATION'
-                },
-                {
-                    id: 12, name: 'Binning Tools',
-                    description: 'Instant access to free trials. Zero cost entry.',
-                    price: '10', imageUrl: 'binning.png', detailsUrl: 'binning.html', tag: 'TOOLS'
-                },
-                {
-                    id: 13, name: 'Bulletproof RDP',
-                    description: 'Decentralized & Anonymous. Max security lockdown.',
-                    price: 'VARIES', imageUrl: 'rdp.png', detailsUrl: 'rdp.html', tag: 'INFRA'
-                },
-                {
-                    id: 2, name: 'Premium CC',
-                    description: 'Top-Quality Material. High balance probability.',
-                    price: '10', imageUrl: 'cc.png', detailsUrl: 'cc.html', tag: 'DATA'
-                },
-                {
-                    id: 11, name: 'Non Vbv Bin',
-                    description: 'Fast & Reliable Non-VBV BINs. 2fa Bypass capable.',
-                    price: '2', imageUrl: 'nonvbv.png', detailsUrl: 'non.html', tag: 'DATA'
-                },
-                {
-                    id: 6, name: 'Decentralized Proxy',
-                    description: 'Residental IPs. Maximum Speed & Anonymity.',
-                    price: '20', imageUrl: 'proxy.png', detailsUrl: 'proxy.html', tag: 'NETWORK'
-                },
-                {
-                    id: 7, name: 'HQ Dumps',
-                    description: 'Fresh Sniffed Data. Track 1/2 available.',
-                    price: '80', imageUrl: 'ccdumps.png', detailsUrl: 'cc-dumps.html', tag: 'DATA'
-                },
-                {
-                    id: 8, name: 'Phishing Scamas',
-                    description: 'Realistic 1:1 Clones. Includes full source code.',
-                    price: '25', imageUrl: 'phishing.png', detailsUrl: 'phishing-sites.html', tag: 'SOURCE'
-                },
-                {
-                    id: 9, name: 'CC Generator Script',
-                    description: 'Luhn Algo Check + BIN Validation logic.',
-                    price: '6', imageUrl: 'ccgenerator.png', detailsUrl: 'cc-generator-script.html', tag: 'SCRIPT'
-                },
-                {
-                    id: 10, name: 'VBV Checker',
-                    description: 'Active/Dead Validator. Gate bypass logic included.',
-                    price: '15', imageUrl: 'vv.png', detailsUrl: 'vbv-checker-script.html', tag: 'SCRIPT'
-                },
-                {
-                    id: 4, name: 'Enroll',
-                    description: 'Full bank access data with background history and high limits.',
-                    price: '35', imageUrl: 'enroll.jpeg', detailsUrl: 'enroll.html', tag: 'DATA'
-                },
-                {
-                    id: 3, name: 'Gift Cards',
-                    description: 'Verified e-gift cards for major retailers. Instant digital delivery.',
-                    price: '10', imageUrl: 'giftcard.jpeg', detailsUrl: 'giftcards.html', tag: 'PRODUCT'
-                },
-                {
-                    id: 5, name: 'Bank Logs',
-                    description: 'High balance accounts with full access and routing details.',
-                    price: '150', imageUrl: 'banklogs.jpeg', detailsUrl: 'banklogs.html', tag: 'DATA'
-                }
-            ];
+// 🔥 REVERSE ORDER HERE
+const reversed=[...products].reverse();
 
-            const productGrid = document.getElementById('product-grid');
-            
-            // Generate HTML with delays for staggered animation
-            productGrid.innerHTML = products.map((product, index) => `
-                <div class="cyber-card rounded-xl p-0 flex flex-col group opacity-0 animate-fade-in-up" style="animation: fadeInUp 0.5s ease forwards ${index * 0.1}s;">
-                    <!-- Decorative Corners -->
-                    <div class="corner corner-tl"></div>
-                    <div class="corner corner-tr"></div>
-                    <div class="corner corner-bl"></div>
-                    <div class="corner corner-br"></div>
+const grid=document.getElementById('product-grid');
 
-                    <!-- Image Section -->
-                    <div class="relative h-48 overflow-hidden border-b border-gray-800">
-                        <div class="absolute top-2 right-2 z-10 bg-black/80 text-cyber-primary text-xs px-2 py-1 rounded border border-cyber-primary font-bold">
-                            ${product.tag || 'SECURE'}
-                        </div>
-                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:opacity-80" 
-                             src="${product.imageUrl}" 
-                             alt="${product.name}" 
-                             onerror="this.src='https://placehold.co/600x400/000000/00f3ff?text=ENCRYPTED+DATA';">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-                    </div>
+grid.innerHTML=reversed.map((p,index)=>`
+<div class="cyber-card rounded-xl flex flex-col group opacity-0" style="animation:fade .5s forwards ${index*.1}s">
 
-                    <!-- Content Section -->
-                    <div class="p-6 flex-grow flex flex-col relative">
-                        <h3 class="text-2xl font-header font-bold mb-2 text-white group-hover:text-cyber-primary transition-colors">
-                            <span class="text-cyber-secondary mr-2">></span>${product.name}
-                        </h3>
-                        <p class="text-gray-400 mb-4 text-sm leading-relaxed border-l-2 border-gray-700 pl-3 group-hover:border-cyber-primary transition-colors">
-                            ${product.description}
-                        </p>
-                        
-                        <div class="mt-auto pt-4 border-t border-gray-800/50">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="text-xs text-cyber-success uppercase tracking-widest">Available</div>
-                                <div class="text-2xl font-black text-white">$${product.price}</div>
-                            </div>
-                            
-                            <div class="grid grid-cols-2 gap-3">
-                                <a href="payments.html" class="btn-cyber-primary py-3 px-4 text-center font-bold text-sm tracking-wider group-hover:shadow-[0_0_15px_#00f3ff]">
-                                    <span class="relative z-10 text-black">BUY ACCESS</span>
-                                </a>
-                                <a href="${product.detailsUrl}" class="btn-cyber-secondary py-3 px-4 rounded text-center font-bold text-sm tracking-wider transition-all">
-                                    DETAILS
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        });
-    </script>
-    
-    <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+<div class="relative h-48 overflow-hidden border-b border-gray-800">
+<div class="absolute top-2 right-2 bg-black/80 text-cyan-400 text-xs px-2 py-1 rounded">${p.tag}</div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition" src="${p.imageUrl}" onerror="this.src='https://placehold.co/600x400/000/00f3ff?text=DATA'">
+</div>
+
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-2xl font-header text-white mb-2">${p.name}</h3>
+<p class="text-gray-400 text-sm mb-4">${p.description}</p>
+
+<div class="mt-auto pt-4 border-t border-gray-800 flex justify-between items-center">
+<span class="text-green-400 text-xs">Available</span>
+<span class="text-xl font-bold">$${p.price}</span>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-4">
+<a href="payments.html" class="btn-cyber-primary py-2 text-center font-bold text-sm">BUY</a>
+<a href="${p.detailsUrl}" class="btn-cyber-secondary py-2 text-center font-bold text-sm">DETAILS</a>
+</div>
+
+</div>
+</div>
+`).join('');
+});
+
+</script>
+
+<style>
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+</style>
 
 </body>
 </html>
-
-
-
-
-
-
