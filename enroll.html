@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrontDoor.exe | Bank Enrollments</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+theme:{
+extend:{
+colors:{
+cyber:{
+black:'#020202',
+dark:'#0a0a12',
+primary:'#00f3ff',
+secondary:'#bc13fe',
+success:'#00ff41',
+dim:'rgba(0,243,255,0.1)',
+warning:'#ff003c'
+}},
+fontFamily:{
+header:['Orbitron','sans-serif'],
+mono:['Share Tech Mono','monospace'],
+}}}}
+</script>
+
+<style>
+body{font-family:'Share Tech Mono',monospace;background:#050505;color:#e0e0e0;overflow-x:hidden}
+#matrix-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:.4}
+
+.glitch{font-size:3rem;font-weight:900;text-shadow:2px 2px #bc13fe,-2px -2px #00f3ff}
+@media(max-width:768px){.glitch{font-size:2rem}}
+
+.cyber-card{background:rgba(10,10,18,.8);border:1px solid rgba(0,243,255,.2);transition:.4s; box-shadow: 0 4px 6px rgba(0,0,0,0.5);}
+.cyber-card:hover{border-color:#00f3ff;box-shadow:0 0 15px rgba(0,243,255,.15)}
+.cyber-card-warning{border-color: rgba(255,0,60,0.3);}
+.cyber-card-warning:hover{border-color: #ff003c;box-shadow:0 0 15px rgba(255,0,60,.2)}
+
+.btn-cyber-primary{background:linear-gradient(45deg,#00f3ff,#0066ff);color:#000; transition: 0.3s;}
+.btn-cyber-primary:hover{box-shadow:0 0 15px rgba(0,243,255,.6); transform: scale(1.02);}
+.btn-cyber-secondary{border:1px solid #bc13fe;color:#bc13fe; transition: 0.3s;}
+.btn-cyber-secondary:hover{background:rgba(188,19,254,.1); box-shadow:0 0 15px rgba(188,19,254,.4);}
+
+.scanlines{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.1) 50%);background-size:100% 4px;pointer-events:none;z-index:50}
+
+.terminal-text::before { content: "> "; color: #00ff41; }
+</style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center">
+
+<canvas id="matrix-canvas"></canvas>
+<div class="scanlines"></div>
+
+<div class="relative w-full max-w-5xl mx-auto px-4 py-12 z-10 flex-grow">
+
+<!-- Navigation -->
+<a href="index.html" class="inline-flex items-center text-cyber-primary hover:text-white mb-8 transition-colors duration-300">
+    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+    RETURN TO MAIN DIRECTORY
+</a>
+
+<header class="mb-10 border-b border-cyber-dim pb-6">
+    <div class="flex items-center justify-between">
+        <div>
+            <span class="text-cyber-success text-sm font-bold tracking-widest mb-2 block">// TARGET ACQUIRED</span>
+            <h1 class="glitch font-header">ENROLL.DAT</h1>
+        </div>
+        <div class="hidden md:block text-right">
+            <span class="block text-gray-500 text-xs">STATUS:</span>
+            <span class="block text-cyber-success font-bold text-xl animate-pulse">ONLINE</span>
+        </div>
+    </div>
+</header>
+
+<main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- Left Column: Image & Quick Stats -->
+    <div class="lg:col-span-1 space-y-6">
+        <div class="cyber-card rounded-xl p-2 relative group overflow-hidden">
+            <div class="absolute top-4 right-4 bg-black/80 text-cyber-primary text-xs px-2 py-1 rounded border border-cyber-primary z-10">DATA</div>
+            <img class="w-full h-auto object-cover rounded border border-gray-800 opacity-80 group-hover:opacity-100 transition duration-500" src="enroll.jpeg" onerror="this.src='https://placehold.co/600x600/0a0a12/00f3ff?text=ENROLL+DATA'">
+            
+            <!-- Scanline over image -->
+            <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-cyber-primary/10 to-transparent h-full w-full opacity-50 translate-y-[-100%] group-hover:animate-[scan_2s_ease-in-out_infinite]"></div>
+        </div>
+
+        <div class="cyber-card rounded-xl p-6">
+            <h3 class="font-header text-cyber-primary border-b border-gray-800 pb-2 mb-4">DATA PACKAGE INFO</h3>
+            <ul class="space-y-3 text-sm">
+                <li class="flex justify-between"><span class="text-gray-500">Format:</span> <span class="text-white">FULL PII + LOGINS</span></li>
+                <li class="flex justify-between"><span class="text-gray-500">Delivery:</span> <span class="text-cyber-success">Instant / Auto</span></li>
+                <li class="flex justify-between"><span class="text-gray-500">Balance:</span> <span class="text-white">High Probability</span></li>
+                <li class="flex justify-between"><span class="text-gray-500">Stock:</span> <span class="text-white">Highly Limited</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Right Column: Details & Purchasing -->
+    <div class="lg:col-span-2 space-y-8">
+        
+        <!-- Description -->
+        <div class="cyber-card rounded-xl p-8">
+            <h2 class="text-2xl font-header text-white mb-6 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-cyber-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                ASSET DESCRIPTION
+            </h2>
+            <div class="space-y-4 text-gray-300 leading-relaxed">
+                <p class="terminal-text">Premium, high-level bank enrollment data packages. These files contain comprehensive personally identifiable information (PII), routing details, account numbers, and complete online banking credentials.</p>
+                <p class="terminal-text">Each node is pre-verified to ensure active status and bypass preliminary security triggers before hitting our master database.</p>
+                <p class="terminal-text">Perfect for establishing stealth financial drops, managing decentralized funds, or initiating secure wire transfers across the network.</p>
+            </div>
+
+            <div class="mt-8 p-4 border border-cyber-dim bg-cyber-black rounded flex items-center justify-between">
+                <div>
+                    <span class="block text-gray-500 text-sm mb-1">CURRENT MARKET PRICE</span>
+                    <span class="text-3xl font-bold text-white">$35.00 <span class="text-sm text-gray-500 font-normal">USD</span></span>
+                </div>
+                <a href="payments.html" class="btn-cyber-primary px-8 py-4 rounded font-bold tracking-wider hover:cursor-pointer flex items-center">
+                    INITIATE TRANSFER
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Terms & Conditions Section -->
+        <div class="cyber-card cyber-card-warning rounded-xl p-8 relative overflow-hidden">
+            <!-- Warning Stripes -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,#ff003c_10px,#ff003c_20px)]"></div>
+            
+            <h2 class="text-2xl font-header text-cyber-warning mb-6 flex items-center">
+                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                CRITICAL TERMS & CONDITIONS
+            </h2>
+            
+            <p class="text-gray-400 mb-6 text-sm">By executing the purchase sequence, you cryptographically agree to the following protocols:</p>
+            
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-start">
+                    <span class="text-cyber-warning font-bold mr-3 mt-0.5">[1]</span>
+                    <div>
+                        <strong class="text-white block mb-1">NO GUARANTEE AFTER SALES.</strong>
+                        <span class="text-sm text-gray-400">Due to the volatile nature of these assets, once the payload (Full Data/Logins) is transmitted to your terminal, the transaction is absolute and final. We do not offer replacements for accounts burned post-delivery.</span>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-cyber-warning font-bold mr-3 mt-0.5">[2]</span>
+                    <div>
+                        <strong class="text-white block mb-1">VERIFY BEFORE BUYING.</strong>
+                        <span class="text-sm text-gray-400">Everything in the system is strictly fixed. Always verify your requirements and operational security before initiating a purchase. If you have any queries, ping support <span class="text-cyber-primary underline cursor-pointer">BEFORE</span> sending funds.</span>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-cyber-warning font-bold mr-3 mt-0.5">[3]</span>
+                    <div>
+                        <strong class="text-white block mb-1">RESPONSIBILITY TRANSFER.</strong>
+                        <span class="text-sm text-gray-400">Utilization methods, OPSEC failures, and cash-out procedures are entirely the responsibility of the operator (you). Ensure you use proper proxy/RDP setups.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</main>
+
+</div>
+
+<footer class="w-full text-center py-6 border-t border-cyber-dim mt-auto z-10 bg-black/50">
+<p class="text-gray-500 text-sm font-mono">
+© 2025 FRONT DOOR.EXE ● ALL RIGHTS RESERVED ● DECENTRALIZED NETWORK
+</p>
+</footer>
+
+<script>
+// MATRIX BACKGROUND
+const canvas=document.getElementById('matrix-canvas');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+resize();addEventListener('resize',resize);
+
+const chars='010101FRONTDOOR';
+const fontSize=14;
+const columns=canvas.width/fontSize;
+const drops=[];
+for(let i=0;i<columns;i++)drops[i]=1;
+
+function draw(){
+ctx.fillStyle='rgba(5,5,5,.05)';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.font=fontSize+'px monospace';
+
+for(let i=0;i<drops.length;i++){
+const text=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillStyle='#00ff41'; // Green matrix text
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+if(drops[i]*fontSize>canvas.height&&Math.random()>.975)drops[i]=0;
+drops[i]++;
+}}
+setInterval(draw,33);
+</script>
+
+<style>
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+</style>
+
+</body>
+</html>
